@@ -1,0 +1,62 @@
+        var switch_obj = document.querySelector('input[type=checkbox]')
+        disable_channel_all();
+        able_channel(elements_arr[0]);
+        b_0.classList.add('button_disable');
+
+        button_arr.forEach((element, index) => {
+            element.onclick = function () {
+                if (!switch_obj.checked) {
+                    disable_channel_all();
+                    able_channel(elements_arr[index]);
+                    able_button_all()
+                    this.classList.add('button_disable');
+                }
+                else {
+                    var button_bool = this.classList.contains('button_disable')
+                    if (button_bool) {
+                        disable_channel(elements_arr[index]);
+                        this.classList.remove('button_disable');
+                    }
+                    else {
+                        able_channel(elements_arr[index]);
+                        this.classList.add('button_disable');
+                    };
+                };
+            };
+        });
+
+        switch_obj.onclick = function () {
+            if (!switch_obj.checked) {
+                disable_channel_all();
+                able_button_all()
+                able_channel(elements_arr[0]);
+                b_0.classList.add('button_disable');
+            }
+        };
+
+        function disable_channel_all() {
+            elements_arr.forEach((elements) => {
+                elements.forEach((element) => {
+                    element.classList.add('dis');
+                });
+            });
+        }
+
+        function able_button_all() {
+            button_arr.forEach((element) => {
+                element.classList.remove('button_disable');
+            });
+        }
+
+        function disable_channel(elements) {
+            elements.forEach((element) => {
+                element.classList.add('dis');
+            });
+        };
+
+        function able_channel(elements) {
+            elements.forEach((element) => {
+                element.classList.remove('dis');
+            });
+        };
+    </script>
